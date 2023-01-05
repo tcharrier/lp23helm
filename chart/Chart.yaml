@@ -1,0 +1,4 @@
+apiVersion: v2
+description: Chart to deploy Promeo API
+name: promeoapi
+version: 1.0.0

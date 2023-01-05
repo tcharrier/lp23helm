@@ -1,0 +1,76 @@
+name: K8S_Helm_deployment
+
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+- stage: Package
+  displayName: "Package"
+
+  jobs:
+  - job: Package
+    displayName: "Package"
+    steps:
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact: chart'
+      inputs:
+        PathtoPublish: xxx
+        ArtifactName: xxx
+
+- stage: DEV
+  dependsOn: Package
+  displayName: "DEV"
+  jobs:
+  - deployment:
+    environment: dev 
+    strategy:                 
+      runOnce:              
+        deploy:    
+          steps:
+          - task: DownloadBuildArtifacts@1
+            displayName: 'Download Build Artifacts'
+            inputs:
+              artifactName: xxx
+              downloadPath: '$(Pipeline.Workspace)'
+          - task: HelmDeploy@0
+            displayName: 'helm upgrade'
+            inputs:
+              azureSubscription: 'AZURE_PROMEO'
+              azureResourceGroup: '2023_promeo'
+              kubernetesCluster: lp2023
+              namespace: xxx
+              command: upgrade
+              chartType: FilePath
+              chartPath: $(Pipeline.Workspace)/xxx
+              releaseName: xxx
+              force: true
+
+- stage: PROD
+  dependsOn: DEV
+  displayName: "PROD"
+  jobs:
+  - deployment:
+    environment: prod 
+    strategy:                 
+      runOnce:              
+        deploy:    
+          steps:
+          - task: DownloadBuildArtifacts@1
+            displayName: 'Download Build Artifacts'
+            inputs:
+              artifactName: xxx
+              downloadPath: '$(Pipeline.Workspace)'
+          - task: HelmDeploy@0
+            displayName: 'helm upgrade'
+            inputs:
+              azureSubscription: 'AZURE_PROMEO'
+              azureResourceGroup: '2023_Promeo_2'
+              kubernetesCluster: 'lp2023_1'
+              namespace: xxx
+              command: upgrade
+              chartType: FilePath
+              chartPath: $(Pipeline.Workspace)/xxx
+              releaseName: xxx
+              force: true
