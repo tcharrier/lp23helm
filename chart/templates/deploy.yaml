@@ -27,3 +27,5 @@ spec:
         - name: configmap-html
           mountPath: "/app/appsettings.json"
           subPath: appsettings.json
+      imagePullSecrets: 
+      - name: docker-pass-2

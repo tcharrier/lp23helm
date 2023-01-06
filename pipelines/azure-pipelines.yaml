@@ -44,8 +44,8 @@ stages:
               command: upgrade
               chartType: FilePath
               chartPath: $(Pipeline.Workspace)/chart
-              overrideValues: 'key1=val1'
-              releaseName: akimflorentdev
+              overrideValues: 'env=dev'
+              releaseName: dev
               force: true
 
 - stage: PROD
@@ -85,6 +85,6 @@ stages:
               command: upgrade
               chartType: FilePath
               chartPath: $(Pipeline.Workspace)/xxx
-              overrideValues: 'key1=val1'
-              releaseName: akimflorentprod
+              overrideValues: 'env=prod'
+              releaseName: prod
               force: true
