@@ -75,7 +75,7 @@ stages:
               azureResourceGroup: '2023_Promeo_2'
               kubernetesCluster: 'lp2023_1'
               command: create
-              arguments: 'ns voglimaccileger-prod'
+              arguments: 'namespace voglimaccileger-prod'
             continueOnError: true
           - task: HelmDeploy@0
             displayName: 'helm upgrade'
