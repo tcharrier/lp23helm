@@ -1,2 +1,3 @@
 nginx:
   replicas: 3
+env:
