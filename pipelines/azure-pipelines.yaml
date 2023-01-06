@@ -44,6 +44,7 @@ stages:
               command: upgrade
               chartType: FilePath
               chartPath: $(Pipeline.Workspace)/xxx
+              valueFile: 'key1=val1'
               releaseName: xxx
               force: true
 
@@ -84,5 +85,6 @@ stages:
               command: upgrade
               chartType: FilePath
               chartPath: $(Pipeline.Workspace)/xxx
+              valueFile: 'key1=val1'
               releaseName: xxx
               force: true
