@@ -1,3 +1,3 @@
 NGINX:
-  Replicas: 
- 
+  Replicas: 3
+  version: dev
