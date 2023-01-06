@@ -38,6 +38,7 @@ stages:
           - task: HelmDeploy@0
             displayName: 'helm upgrade'
             inputs:
+              waitForExecution: false
               azureSubscription: 'AZURE_PROMEO'
               azureResourceGroup: '2023_promeo'
               kubernetesCluster: lp2023
