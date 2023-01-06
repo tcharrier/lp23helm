@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: svc
+spec:
+  selector:
+    app: promeoapi
+  type:  LoadBalancer
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
