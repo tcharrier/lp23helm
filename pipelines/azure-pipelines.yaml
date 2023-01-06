@@ -48,6 +48,7 @@ stages:
               overrideValues: 'RestAPI.version=dev'
               releaseName: dev
               force: true
+              waitForExecution: false
 
 - stage: PROD
   dependsOn: DEV
@@ -89,3 +90,4 @@ stages:
               overrideValues: 'RestAPI.version=prod'
               releaseName: prod
               force: true
+              waitForExecution: false
