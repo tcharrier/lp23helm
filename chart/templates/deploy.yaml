@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  promeoapi
+  namespace: voglimaccileger
+  labels:
+    app:  promeoapi
+spec:
+  replicas: {{ .Values.promeoapi.Replicas }}
+  selector:
+    matchLabels:
+      app:  promeoapi
+  template:
+    metadata:
+      labels:
+        app:  promeoapi
+    spec:
+      volumes:
+        - name: configmap-json
+          configMap:
+            name: configmap-json
+      containers:
+      - name:  promeoapi
+        image: {{ .Values.promeoapi.image.repository }}/{{ .Values.promeoapi.image.name }}:{{ .Values.promeoapi.image.tag }}
+        imagePullPolicy: Always
+        volumeMounts:
+        - name: configmap-json
+          mountPath: /app/appsettings.json
+          subPath: appsettings.json
+        env:
+          - name: REGISTRY_SECRET_NAME
+            value: acr-secret
+      imagePullSecrets:
+        - name: acr-secret

@@ -1,0 +1,8 @@
+---
+promeoapi: 
+  Replicas: 3
+  image:
+    repository: acrlp22.azurecr.io
+    name: promeoapi
+    tag: v1
+---
