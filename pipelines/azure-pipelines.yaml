@@ -17,8 +17,8 @@ stages:
     - task: PublishBuildArtifacts@1
       displayName: 'Publish Artifact: chart'
       inputs:
-        PathtoPublish: xxx
-        ArtifactName: xxx
+        PathtoPublish: chart
+        ArtifactName: chart
 
 - stage: DEV
   dependsOn: Package
@@ -33,7 +33,7 @@ stages:
           - task: DownloadBuildArtifacts@1
             displayName: 'Download Build Artifacts'
             inputs:
-              artifactName: xxx
+              artifactName: chart
               downloadPath: '$(Pipeline.Workspace)'
           - task: HelmDeploy@0
             displayName: 'helm upgrade'
@@ -41,12 +41,12 @@ stages:
               azureSubscription: 'AZURE_PROMEO'
               azureResourceGroup: '2023_promeo'
               kubernetesCluster: lp2023
-              namespace: xxx
+              namespace: arthur-maxime
               command: upgrade
               chartType: FilePath
-              chartPath: $(Pipeline.Workspace)/xxx
+              chartPath: $(Pipeline.Workspace)/chart
               overrideValues: 'key1=val1'
-              releaseName: xxx
+              releaseName: Dev
               force: true
 
 - stage: PROD
@@ -62,7 +62,7 @@ stages:
           - task: DownloadBuildArtifacts@1
             displayName: 'Download Build Artifacts'
             inputs:
-              artifactName: xxx
+              artifactName: chart
               downloadPath: '$(Pipeline.Workspace)'
           - task: KubectlInstaller@0
             displayName: 'Install Kubectl latest'
@@ -74,7 +74,7 @@ stages:
               azureResourceGroup: '2023_Promeo_2'
               kubernetesCluster: 'lp2023_1'
               command: create
-              arguments: 'xxxx'
+              arguments: 'ns arthur-maxime'
             continueOnError: true
           - task: HelmDeploy@0
             displayName: 'helm upgrade'
@@ -82,10 +82,10 @@ stages:
               azureSubscription: 'AZURE_PROMEO'
               azureResourceGroup: '2023_Promeo_2'
               kubernetesCluster: 'lp2023_1'
-              namespace: xxx
+              namespace: arthur-maxime
               command: upgrade
               chartType: FilePath
-              chartPath: $(Pipeline.Workspace)/xxx
+              chartPath: $(Pipeline.Workspace)/chart
               overrideValues: 'key1=val1'
-              releaseName: xxx
+              releaseName: Dev
               force: true
