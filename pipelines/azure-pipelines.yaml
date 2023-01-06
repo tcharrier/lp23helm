@@ -17,8 +17,8 @@ stages:
     - task: PublishBuildArtifacts@1
       displayName: 'Publish Artifact: chart'
       inputs:
-        PathtoPublish: https://github.com/tcharrier/lp23helm/tree/thomas-clement/chart
-        ArtifactName: rest-api
+        PathtoPublish: chart
+        ArtifactName: chart
 
 - stage: DEV
   dependsOn: Package
@@ -33,7 +33,7 @@ stages:
           - task: DownloadBuildArtifacts@1
             displayName: 'Download Build Artifacts'
             inputs:
-              artifactName: rest-api
+              artifactName: chart
               downloadPath: '$(Pipeline.Workspace)'
           - task: HelmDeploy@0
             displayName: 'helm upgrade'
@@ -62,7 +62,7 @@ stages:
           - task: DownloadBuildArtifacts@1
             displayName: 'Download Build Artifacts'
             inputs:
-              artifactName: rest-api
+              artifactName: chart
               downloadPath: '$(Pipeline.Workspace)'
           - task: KubectlInstaller@0
             displayName: 'Install Kubectl latest'
