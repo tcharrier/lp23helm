@@ -1,6 +1,6 @@
 name: K8S_Helm_deployment
 
-trigger: 
+trigger:
 - thomas-clement
 
 pool:
