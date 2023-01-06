@@ -42,6 +42,7 @@ stages:
               azureResourceGroup: '2023_promeo'
               kubernetesCluster: lp2023
               namespace: voglimaccileger-dev
+              waitForExecution: false
               command: upgrade
               chartType: FilePath
               chartPath: $(Pipeline.Workspace)/chart
@@ -83,6 +84,7 @@ stages:
               azureResourceGroup: '2023_Promeo_2'
               kubernetesCluster: 'lp2023_1'
               namespace: voglimaccileger-prod
+              waitForExecution: false
               command: upgrade
               chartType: FilePath
               chartPath: $(Pipeline.Workspace)/chart
