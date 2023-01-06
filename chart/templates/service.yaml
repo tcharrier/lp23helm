@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: rest-api-app
+  name: oceance-kiki-lea
 spec:
   selector:
     app: configmap-appsettings-api-oceance-kiki-lea
