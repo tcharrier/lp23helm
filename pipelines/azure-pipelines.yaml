@@ -44,10 +44,11 @@ stages:
               namespace: noah-jeremy-dev
               command: upgrade
               chartType: FilePath
-              chartPath: $(Pipeline.Workspace)/xxx
+              chartPath: $(Pipeline.Workspace)/chart
               overrideValues: 'key1=val1'
               releaseName: dev
               force: true
+              waitForExecution : false
 
 - stage: PROD
   dependsOn: DEV
@@ -85,7 +86,8 @@ stages:
               namespace: noah-jeremy-dev
               command: upgrade
               chartType: FilePath
-              chartPath: $(Pipeline.Workspace)/xxx
+              chartPath: $(Pipeline.Workspace)/chart
               overrideValues: 'key1=val1'
               releaseName: prod
               force: true
+              waitForExecution : false
