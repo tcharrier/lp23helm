@@ -45,7 +45,7 @@ stages:
               command: upgrade
               chartType: FilePath
               chartPath: $(Pipeline.Workspace)/chart
-              overrideValues: 'key1=val1'
+              overrideValues: 'testapi.version=dev'
               releaseName: noah
               force: true
               waitForExecution : false
@@ -87,7 +87,7 @@ stages:
               command: upgrade
               chartType: FilePath
               chartPath: $(Pipeline.Workspace)/chart
-              overrideValues: 'key1=val1'
+              overrideValues: 'testapi.version=prod'
               releaseName: prod
               force: true
               waitForExecution : false
