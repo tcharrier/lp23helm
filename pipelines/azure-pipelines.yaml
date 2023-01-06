@@ -41,7 +41,7 @@ stages:
               azureSubscription: 'AZURE_PROMEO'
               azureResourceGroup: '2023_promeo'
               kubernetesCluster: lp2023
-              namespace: lucasroutier
+              namespace: yannlucas
               command: upgrade
               chartType: FilePath
               chartPath: $(Pipeline.Workspace)/chart
@@ -74,7 +74,7 @@ stages:
               azureResourceGroup: '2023_Promeo_2'
               kubernetesCluster: 'lp2023_1'
               command: create
-              arguments: 'namespace lucasroutier'
+              arguments: 'namespace yannlucas'
             continueOnError: true
           - task: HelmDeploy@0
             displayName: 'helm upgrade'
@@ -82,7 +82,7 @@ stages:
               azureSubscription: 'AZURE_PROMEO'
               azureResourceGroup: '2023_Promeo_2'
               kubernetesCluster: 'lp2023_1'
-              namespace: lucasroutier
+              namespace: yannlucas
               command: upgrade
               chartType: FilePath
               chartPath: $(Pipeline.Workspace)/chart
