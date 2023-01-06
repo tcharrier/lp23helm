@@ -47,6 +47,7 @@ stages:
               chartPath: $(Pipeline.Workspace)/chart
               overrideValues: 'App1.version=Development' #App1.version=Development !
               releaseName: erwan-rest-api-dev
+              waitForExecution: false
               force: true
 
 - stage: PROD
@@ -88,4 +89,5 @@ stages:
               chartPath: $(Pipeline.Workspace)/chart
               overrideValues: 'App1.version=Prod'
               releaseName: erwan-rest-api-prod
+              waitForExecution: false
               force: true
