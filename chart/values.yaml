@@ -1,0 +1,3 @@
+eval2:
+    CustomReplicas: 3
+    version: DEV

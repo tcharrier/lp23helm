@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: rest-api-app
+spec:
+  selector:
+    app: configmap-appsettings-api-oceance-kiki-lea
+  type: LoadBalancer
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80

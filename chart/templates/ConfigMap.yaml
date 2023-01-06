@@ -1,7 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: configmap-html
+  name: configmap-appsettings-api-oceance-kiki-lea
 data:
-  index.html: |-
-    <html>kylian </html>
+  appsettings.json: |-
+   {
+     "Version": "{{.Values.eval2.version}}"
+   }

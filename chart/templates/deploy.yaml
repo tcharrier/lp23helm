@@ -1,1 +1,1 @@
-deplicas: {{.3.NGINX.Replicas}}
+deplicas: {{.Values.eval2.version}}
