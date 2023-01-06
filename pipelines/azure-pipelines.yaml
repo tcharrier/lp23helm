@@ -84,6 +84,7 @@ stages:
               kubernetesCluster: 'lp2023_1'
               namespace: yannlucas
               command: upgrade
+              waitForExecution: false
               chartType: FilePath
               chartPath: $(Pipeline.Workspace)/chart
               overrideValues: 'App1.version=prod'
