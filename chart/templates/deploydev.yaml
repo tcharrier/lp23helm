@@ -30,4 +30,3 @@ spec:
           name: configmap-lucasyann
       imagePullSecrets:
         - name: secretazure
-#lucas
