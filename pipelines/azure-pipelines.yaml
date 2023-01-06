@@ -1,6 +1,6 @@
 name: K8S_Helm_deployment
 
-trigger: none
+trigger: akimflorent
 
 pool:
   vmImage: ubuntu-latest
