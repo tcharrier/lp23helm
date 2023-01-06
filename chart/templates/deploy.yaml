@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name:  promeoapi
-  namespace: voglimaccileger
+  name:  voglimaccileger-api-dev
+  namespace: voglimaccileger-dev
   labels:
-    app:  promeoapi
+    app:  voglimaccileger-api-dev
 spec:
   replicas: {{ .Values.promeoapi.Replicas }}
   selector:
     matchLabels:
-      app:  promeoapi
+      app:  voglimaccileger-api-dev
   template:
     metadata:
       labels:
-        app:  promeoapi
+        app:  voglimaccileger-api-dev
     spec:
       volumes:
         - name: configmap-json
