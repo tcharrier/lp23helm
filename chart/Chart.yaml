@@ -1,4 +1,4 @@
 apiVersion: v2
 description: Deploiement TP Note
-name: chartlucasyann
+name: v1
 version: 1.0.0
