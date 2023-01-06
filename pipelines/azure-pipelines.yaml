@@ -1,6 +1,7 @@
 name: K8S_Helm_deployment
 
-trigger: voglimaccileger
+trigger: 
+- voglimaccileger
 
 pool:
   vmImage: ubuntu-latest
