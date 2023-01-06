@@ -4,7 +4,7 @@ metadata:
   name: oceance-kiki-lea
 spec:
   selector:
-    app: configmap-appsettings-api-oceance-kiki-lea
+    app: oceance-kiki-lea
   type: LoadBalancer
   ports:
   - name: http
