@@ -1,6 +1,7 @@
 name: K8S_Helm_deployment
 
-trigger: none
+trigger:
+- noah-jeremy
 
 pool:
   vmImage: ubuntu-latest
