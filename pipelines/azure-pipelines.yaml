@@ -41,7 +41,7 @@ stages:
               azureSubscription: 'AZURE_PROMEO'
               azureResourceGroup: '2023_promeo'
               kubernetesCluster: lp2023
-              namespace: gregory-matheo
+              namespace: matteopex
               command: upgrade
               chartType: FilePath
               chartPath: $(Pipeline.Workspace)/chart
@@ -82,7 +82,7 @@ stages:
               azureSubscription: 'AZURE_PROMEO'
               azureResourceGroup: '2023_Promeo_2'
               kubernetesCluster: 'lp2023_1'
-              namespace: greg-matheo
+              namespace: prod-greg-matheo
               command: upgrade
               chartType: FilePath
               chartPath: $(Pipeline.Workspace)/chart
