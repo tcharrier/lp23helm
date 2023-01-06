@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+  labels:
+    app: app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      volumes:
+      - name: configmap-html
+        configMap:
+          name: configmap-html
+      containers:
+      - name: noah-jeremy-dev
+        image: acrlp22.azurecr.io/promeoapi:v1
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: configmap-html
+          mountPath: "/app/appsettings.json"
+          subPath: appsettings.json
+      imagePullSecrets:
+        - name: secret
