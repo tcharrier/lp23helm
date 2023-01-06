@@ -46,7 +46,7 @@ stages:
               chartType: FilePath
               chartPath: $(Pipeline.Workspace)/chart
               overrideValues: 'key1=val1'
-              releaseName: dev
+              releaseName: noah
               force: true
               waitForExecution : false
 
