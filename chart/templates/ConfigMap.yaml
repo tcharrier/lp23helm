@@ -5,5 +5,5 @@ metadata:
 data:
   appsettings.json: |-
     {
-      "Version": "dev"
+      "Version": "{{.Values.promeoapi.version}}"
     }
