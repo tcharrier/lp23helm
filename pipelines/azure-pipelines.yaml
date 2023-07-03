@@ -38,53 +38,12 @@ stages:
             displayName: 'helm upgrade'
             inputs:
               azureSubscription: 'AZURE_PROMEO'
-              azureResourceGroup: '2023_promeo'
-              kubernetesCluster: lp2023
+              azureResourceGroup: 'itades'
+              kubernetesCluster: itades-formation-001
               namespace: xxx
               command: upgrade
               chartType: FilePath
               chartPath: $(Pipeline.Workspace)/xxx
-              overrideValues: 'key1=val1'
-              releaseName: xxx
-              force: true
-
-- stage: PROD
-  dependsOn: DEV
-  displayName: "PROD"
-  jobs:
-  - deployment:
-    environment: prod 
-    strategy:                 
-      runOnce:              
-        deploy:    
-          steps:
-          - task: DownloadBuildArtifacts@1
-            displayName: 'Download Build Artifacts'
-            inputs:
-              artifactName: xxx
-              downloadPath: '$(Pipeline.Workspace)'
-          - task: KubectlInstaller@0
-            displayName: 'Install Kubectl latest'
-          - task: Kubernetes@1
-            displayName: 'kubectl create namespace'
-            inputs:
-              connectionType: 'Azure Resource Manager'
-              azureSubscriptionEndpoint: 'AZURE_PROMEO'
-              azureResourceGroup: '2023_Promeo_2'
-              kubernetesCluster: 'lp2023_1'
-              command: create
-              arguments: 'xxxx'
-            continueOnError: true
-          - task: HelmDeploy@0
-            displayName: 'helm upgrade'
-            inputs:
-              azureSubscription: 'AZURE_PROMEO'
-              azureResourceGroup: '2023_Promeo_2'
-              kubernetesCluster: 'lp2023_1'
-              namespace: xxx
-              command: upgrade
-              chartType: FilePath
-              chartPath: $(Pipeline.Workspace)/xxx
-              overrideValues: 'key1=val1'
+              overrideValues: 'env=dev'
               releaseName: xxx
               force: true
